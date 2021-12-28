@@ -48,9 +48,12 @@ background-size: cover;'>
     <div style="margin-top: 200px; color: black; background-color: floralwhite;
     opacity: 0.6; padding: 20px; border-radius: 20px;  box-shadow: 0 0 10px rgba(0,0,0,0.5);">
         <h1>Getting started with MyTrello</h1>
-        <h3>Welcome to MyTrello! This guide will walk you through everything you need to know about using MyTrello, from setting
-            up your first project to equipping your team with all of the tools they need to get the job done. Each chapter
-            includes easy to follow steps, tips, and templates that will turn you into a MyTrello champion in no time.</h3>
+        <h3>Welcome to MyTrello! This guide will walk you through everything you need to know about using MyTrello, from
+            setting
+            up your first project to equipping your team with all of the tools they need to get the job done. Each
+            chapter
+            includes easy to follow steps, tips, and templates that will turn you into a MyTrello champion in no
+            time.</h3>
     </div>
 </div>
 <div>
@@ -59,6 +62,10 @@ background-size: cover;'>
         <span class="fst-italic">Matios Mykola</span> © ITStep Academy
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
