@@ -22,7 +22,7 @@ background-size: cover;'>
             </a>
         </div>
         <div class="col-6 d-grid gap-2 d-md-flex m-lg-auto justify-content-md-center">
-            <a class="btn btn-primary fw-bold">Create Table</a>
+            <a class="btn btn-primary fw-bold" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">Create Table</a>
         </div>
         <div class="col-3 d-grid gap-2 d-md-flex m-lg-auto justify-content-md-end">
             @if (Route::has('login'))
@@ -31,10 +31,12 @@ background-size: cover;'>
                         <a href="{{ url('/dashboard') }}"
                            class="text-sm text-dark-700">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-info fw-bold">Log in</a>
+                        <a href="{{ route('login') }}" class="btn btn-info fw-bold"
+                           style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btn btn-success fw-bold">Register</a>
+                            <a href="{{ route('register') }}" class="btn btn-success fw-bold"
+                               style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -44,7 +46,7 @@ background-size: cover;'>
 </div>
 <div class="container fw-bolder text-center">
     <div style="margin-top: 200px; color: black; background-color: floralwhite;
-    opacity: 0.6; padding: 20px; border-radius: 20px;">
+    opacity: 0.6; padding: 20px; border-radius: 20px;  box-shadow: 0 0 10px rgba(0,0,0,0.5);">
         <h1>Getting started with MyTrello</h1>
         <h3>Welcome to MyTrello! This guide will walk you through everything you need to know about using MyTrello, from setting
             up your first project to equipping your team with all of the tools they need to get the job done. Each chapter
@@ -52,7 +54,8 @@ background-size: cover;'>
     </div>
 </div>
 <div>
-    <div class="fw-bolder fs-5" style="margin-top: 350px; text-align: right; margin-right: 10px; color: yellow;">
+    <div class="fw-bolder fs-5" style="margin-top: 350px; text-align: right; margin-right: 10px;
+    color: yellow; text-shadow: 1px 1px 2px black, 0 0 1em red;">
         <span class="fst-italic">Matios Mykola</span> © ITStep Academy
     </div>
 </div>
