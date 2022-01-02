@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyTableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('tables', MyTableController:: class);
 
 Route::get('/', function () {
     return view('welcome');

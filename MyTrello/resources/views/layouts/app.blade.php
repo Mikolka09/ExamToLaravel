@@ -25,7 +25,10 @@ background-size: cover;">
 
 <!-- Page Content -->
     <main>
-        {{ $slot }}
+        {{--{{dd($my_title)}}--}}
+        {{--@if($message = \Illuminate\Support\Facades\Session::get('success'))
+            <h2>{{$my_table->title}}</h2>
+        @endif--}}
     </main>
 </div>
 <x-footer/>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MyTable;
 use Illuminate\Http\Request;
 
 class MyTableController extends Controller
@@ -30,11 +31,16 @@ class MyTableController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required'
+        ]);
+        MyTable::create($request->all());
+        $my_title = $request->input('title');
+        return redirect()->route('app', ['my_title'=>$my_title])->with('success');
     }
 
     /**
