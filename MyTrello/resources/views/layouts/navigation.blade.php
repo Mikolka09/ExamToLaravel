@@ -4,9 +4,9 @@
         <div class="row p-2">
             <div class="col">
                 <!-- Logo -->
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo />
-                    </a>
+                <a href="{{ route('dashboard') }}">
+                    <x-application-logo />
+                </a>
             </div>
             <div class="col-6 d-grid gap-2 d-md-flex m-lg-auto justify-content-md-center">
                 <!-- Navigation Links -->
@@ -17,7 +17,7 @@
             <div class="col-3 d-grid gap-2 d-md-flex m-lg-auto justify-content-md-end">
                 <div class="dropdown">
                     <button class="btn btn-info fw-bold dropdown-toggle" type="button" id="menuLink"
-                       data-bs-toggle="dropdown" aria-expanded="false"
+                            data-bs-toggle="dropdown" aria-expanded="false"
                             style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">
                         {{ Auth::user()->name }}
                     </button>
@@ -42,5 +42,5 @@
             </div>
         </div>
     </div>
-    <hr style="color: orange; height: 4px; margin-top: 0; opacity: 1;"/>
+    <hr style="color: orange; height: 4px; margin:0; opacity: 1;"/>
 </nav>
