@@ -23,24 +23,14 @@ background-size: cover;">
 @include('layouts.navigation')
 @auth()
     <!-- Page Heading -->
-        @if(($tables=(collect(\App\Models\MyTable::all()->where('user_id', '==', auth()->id()))))->count()>1)
-
-            <div class="dropdown">
-                <button class="btn btn-info dropdown-toggle fw-bold" style="margin: 6px;" type="button"
-                        id="dropdownTables"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    Tables List
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownTables">
-                    @foreach($tables as $table)
-                        <li><a class="dropdown-item" href='<x-header-table title="{{$table->title}}"/>'>{{$table->title}}</a></li>
-                    @endforeach
-                </ul>
-            </div>
+        @if($tables=(collect(\App\Models\MyTable::all()->where('user_id', '==', auth()->id())))->count()>1)
+            <x-tables-list/>
+        @elseif($title)
+            <x-header-table title="{{$title}}"/>
         @else
             <x-header-table title="{{$tables->first()->title}}"/>
-
         @endif
+
         <hr style="color: crimson; height: 2px; margin-top: 0; opacity: 1;"/>
         <!-- Page Content -->
         <main>

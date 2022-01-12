@@ -39,8 +39,7 @@ class MyTableController extends Controller
             'title'=>'required'
         ]);
         MyTable::create($request->all());
-        $my_title = $request->input('title');
-        return redirect()->route('app', ['my_title'=>$my_title])->with('success');
+        return redirect()->route('dashboard');
     }
 
     /**
