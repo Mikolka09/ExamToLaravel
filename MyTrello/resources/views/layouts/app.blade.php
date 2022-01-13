@@ -23,10 +23,12 @@ background-size: cover;">
 @include('layouts.navigation')
 @auth()
     <!-- Page Heading -->
-        @if($tables=(collect(\App\Models\MyTable::all()->where('user_id', '==', auth()->id())))->count()>1)
+
+   {{-- {{dd($table)}}--}}
+        @if(false)
+            <x-header-table title="{{$table->first()->title}}"/>
+        @elseif($tables->count()>1)
             <x-tables-list/>
-        @elseif($title)
-            <x-header-table title="{{$title}}"/>
         @else
             <x-header-table title="{{$tables->first()->title}}"/>
         @endif

@@ -6,7 +6,7 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownTables">
         @foreach($tables as $table)
-            <li><a class="dropdown-item" href='{{route('dashboard',['title'=>$table->title])}}'>{{$table->title}}</a></li>
+            <li><a class="dropdown-item" href='{{route('dashboard',['id'=>$table->id])}}'>{{$table->title}}</a></li>
         @endforeach
     </ul>
 </div>
