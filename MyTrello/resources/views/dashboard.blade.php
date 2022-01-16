@@ -1,6 +1,7 @@
-<x-app-layout id="0">
+<x-app-layout>
+
     <x-slot name="header">
-        {{dd(if(isset($id))$id;)}}
+
     </x-slot>
 
 </x-app-layout>

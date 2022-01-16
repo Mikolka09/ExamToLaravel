@@ -22,4 +22,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['verified'])->name('dashboard');
 
+Route::get('/table/{id}', function ($id) {
+    return view('table', ['id'=> $id]);
+})->middleware(['verified'])->name('table');
+
 require __DIR__.'/auth.php';

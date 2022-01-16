@@ -17,15 +17,15 @@
 
 
 </head>
-<body style="background: url(img/wallpapers-nature-029.jpg) no-repeat center center fixed;
-background-size: cover;">
+<body style="background: url({{$url}}) no-repeat center center fixed;
+    background-size: cover;">
 <div class="min-h-screen">
 @include('layouts.navigation')
 @auth()
     <!-- Page Heading -->
 
-   {{-- {{dd($table)}}--}}
-        @if(false)
+        {{--{{dd($table)}}--}}
+        @if(!$table->isEmpty())
             <x-header-table title="{{$table->first()->title}}"/>
         @elseif($tables->count()>1)
             <x-tables-list/>
@@ -36,7 +36,19 @@ background-size: cover;">
         <hr style="color: crimson; height: 2px; margin-top: 0; opacity: 1;"/>
         <!-- Page Content -->
         <main>
-            {{ $slot }}
+            <div class="container-fluid">
+                <div class="row">
+                    @if($columns->isEmpty())
+                        <x-table-column/>
+                    @endif
+                    @foreach($columns as $column)
+                        <x-table-column title="{{$column->title}} id={{$column->id}}"/>
+                    @endforeach
+                    <div class="col-2">
+                        <button type="submit" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);" class="btn btn-info fw-bold btn-sm">Create Column</button>
+                    </div>
+                </div>
+            </div>
         </main>
     @endauth
 </div>

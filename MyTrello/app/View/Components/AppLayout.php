@@ -2,13 +2,17 @@
 
 namespace App\View\Components;
 
+use App\Models\MyColumn;
 use App\Models\MyTable;
 use Illuminate\View\Component;
+use Illuminate\Support\Collection;
 
 class AppLayout extends Component
 {
-    public $tables;
-    public $table;
+    public Collection $tables;
+    public Collection $columns;
+    public Collection $table;
+    public string $url;
 
     /**
      * Get the view / contents that represents the component.
@@ -16,17 +20,28 @@ class AppLayout extends Component
      * @return \Illuminate\View\View
      */
 
-    public function __construct($id)
+    public function __construct($id = 0, $url = 'http://127.0.0.1:8000/img/wallpapers-nature-029.jpg')
     {
+        $this->url = $url;
         $this->tables = collect(MyTable::all()->where('user_id', '==', auth()->id()));
-        if ($id > 0)
+
+        if ($id > 0) {
             $this->table = collect(MyTable::all()->where('id', '==', $id));
-        else
-            $this->table = null;
+            $this->columns = collect(MyColumn::all()->where('table_id', '==', $id));
+        } else
+        {
+            $this->table = collect([]);
+            $this->columns = collect([]);
+        }
+
     }
 
     public function render()
     {
-        return view('layouts.app', ['tables' => $this->tables, 'table' => $this->table]);
+        return view('layouts.app', [
+            'tables' => $this->tables,
+            'table' => $this->table,
+            'url' => $this->url,
+            'columns' => $this->columns]);
     }
 }
