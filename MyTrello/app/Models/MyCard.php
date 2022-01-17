@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MyCard extends Model
 {
     use HasFactory;
+
+    protected $fillable=['task', 'column_id'];
 }

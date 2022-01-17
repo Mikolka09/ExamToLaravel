@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MyColumn extends Model
 {
     use HasFactory;
+
+    protected $fillable=['title', 'table_id'];
 }

@@ -1,21 +1,17 @@
-<div class="col-2" style="border: 2px solid red; border-radius: 10px;">
+<div class="col-2" style="border: 4px solid coral; border-radius: 10px; margin-left: 10px;">
     @if($title=="")
-        <div class="d-grid gap-2 mt-2">
-            <button type="submit" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);" class="btn btn-primary fw-bold btn-sm">Create Title</button>
-        </div>
+        <x-title-text title="No title Column"/>
     @else
-        <div class="fw-bold fs-5 text-center" style="background-color: darksalmon; opacity: 0.7;
-    border: 2px solid green; border-radius: 10px;">
-            {{$title}}
-        </div>
+        <x-title-text title="{{$title}}"/>
     @endif
     @foreach($cards as $card)
-        <div>
+        <div class="fw-bold fs-6 text-center" style="background-color:#b6effb ; opacity: 0.7;
+    border: 3px solid #6610f2; border-radius: 10px; margin-top: 5px;">
             {{$card->task}}
         </div>
     @endforeach
     <div class="d-grid gap-2 mt-2">
-        <button type="submit" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);" class="btn btn-success fw-bold btn-sm">Create Card</button>
+        <x-create-card id="{{$id}}"/>
     </div>
 </div>
 

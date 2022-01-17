@@ -10,6 +10,7 @@ class TableColumn extends Component
 {
     public string $title;
     public Collection $cards;
+    public string $id;
 
     /**
      * Create a new component instance.
@@ -18,6 +19,7 @@ class TableColumn extends Component
      */
     public function __construct($title = "", $id = 0)
     {
+        $this->id = $id;
         $this->title = $title;
         if ($id > 0)
             $this->cards = collect(MyCard::all()->where('column_id', '==', $id));

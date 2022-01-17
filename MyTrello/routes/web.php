@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MyCardController;
+use App\Http\Controllers\MyColumnController;
 use App\Http\Controllers\MyTableController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource('tables', MyTableController:: class);
+Route::resource('columns', MyColumnController:: class);
+Route::resource('cards', MyCardController:: class);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,9 +26,5 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['verified'])->name('dashboard');
-
-Route::get('/table/{id}', function ($id) {
-    return view('table', ['id'=> $id]);
-})->middleware(['verified'])->name('table');
 
 require __DIR__.'/auth.php';

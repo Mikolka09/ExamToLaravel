@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MyColumn;
+use App\Models\MyTable;
 use Illuminate\Http\Request;
 
 class MyColumnController extends Controller
@@ -29,29 +31,36 @@ class MyColumnController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'table_id' => 'required',
+        ]);
+        $id = $request['table_id'];
+        $table = MyTable::all()->where('id','==',$id)->first();
+        MyColumn::create($request->all());
+        return redirect()->route('tables.show', compact('table'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+      //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +71,8 @@ class MyColumnController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,7 +83,7 @@ class MyColumnController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -34,22 +34,9 @@
         @endif
 
         <hr style="color: crimson; height: 2px; margin-top: 0; opacity: 1;"/>
-        <!-- Page Content -->
-        <main>
-            <div class="container-fluid">
-                <div class="row">
-                    @if($columns->isEmpty())
-                        <x-table-column/>
-                    @endif
-                    @foreach($columns as $column)
-                        <x-table-column title="{{$column->title}} id={{$column->id}}"/>
-                    @endforeach
-                    <div class="col-2">
-                        <button type="submit" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);" class="btn btn-info fw-bold btn-sm">Create Column</button>
-                    </div>
-                </div>
-            </div>
-        </main>
+        @if(!$table->isEmpty() || $tables->count()==1)
+            <x-main-table id="{{$id}}"/>
+        @endif
     @endauth
 </div>
 

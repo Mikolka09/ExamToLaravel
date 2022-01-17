@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MyCard;
+use App\Models\MyColumn;
+use App\Models\MyTable;
 use Illuminate\Http\Request;
 
 class MyCardController extends Controller
@@ -34,7 +37,15 @@ class MyCardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'task' => 'required',
+            'column_id' => 'required',
+        ]);
+        $id = $request['column_id'];
+        $table_id = MyColumn::all()->where('id','==', $id)->first()->table_id;
+        $table = MyTable::all()->where('id','==',$table_id)->first();
+        MyCard::create($request->all());
+        return redirect()->route('tables.show', compact('table'));
     }
 
     /**
