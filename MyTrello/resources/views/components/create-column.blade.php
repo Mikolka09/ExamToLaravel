@@ -13,7 +13,7 @@
                 <form action="{{route('columns.store')}}" method="POST">
                     @csrf
                     <div class="form-group mb-2">
-                        <input class="form-control" type="text" hidden id="id" name="table_id" value="{{$id}}"/>
+                        <input class="form-control" type="text" id="id" name="table_id" value="{{$id}}"/>
                         <label for="title" class="form-label fw-bold">Title Column</label>
                         <input class="form-control" type="text" id="title" name="title" placeholder="Title Column"/>
                         <small type="text" class="form-text text-muted">Enter the column title</small>

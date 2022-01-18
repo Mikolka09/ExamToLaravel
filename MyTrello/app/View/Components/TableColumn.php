@@ -36,6 +36,7 @@ class TableColumn extends Component
     {
         return view('components.table-column', [
             'title' => $this->title,
-            'cards' => $this->cards]);
+            'cards' => $this->cards,
+            'id' => $this->id]);
     }
 }

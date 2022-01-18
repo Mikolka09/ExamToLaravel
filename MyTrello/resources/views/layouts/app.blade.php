@@ -22,9 +22,6 @@
 <div class="min-h-screen">
 @include('layouts.navigation')
 @auth()
-    <!-- Page Heading -->
-
-        {{--{{dd($table)}}--}}
         @if(!$table->isEmpty())
             <x-header-table title="{{$table->first()->title}}"/>
         @elseif($tables->count()>1)
