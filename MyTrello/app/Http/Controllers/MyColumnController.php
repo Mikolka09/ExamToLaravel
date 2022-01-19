@@ -75,9 +75,16 @@ class MyColumnController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, MyColumn $column)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'table_id' => 'required',
+        ]);
+        $column->update($request->all());
+        $id = $request['table_id'];
+        $table = MyTable::all()->where('id','==',$id)->first();
+        return redirect()->route('tables.show', compact('table'));
     }
 
     /**
@@ -86,8 +93,11 @@ class MyColumnController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, MyColumn $column)
     {
-        //
+        $id = $request['table_id'];
+        $column->delete();
+        $table = MyTable::all()->where('id','==',$id)->first();
+        return redirect()->route('tables.show', compact('table'));
     }
 }

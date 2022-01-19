@@ -37,13 +37,11 @@ class MyCardController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request['column_id'];
-        dd($id);
         $request->validate([
             'task' => 'required',
             'column_id' => 'required',
         ]);
-        /*$id = $request['column_id'];*/
+        $id = $request['column_id'];
         $table_id = MyColumn::all()->where('id','==', $id)->first()->table_id;
         $table = MyTable::all()->where('id','==',$table_id)->first();
         MyCard::create($request->all());

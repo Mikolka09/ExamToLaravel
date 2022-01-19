@@ -1,9 +1,10 @@
 <div class="col-2" style="border: 4px solid coral; border-radius: 10px; margin-left: 10px; margin-bottom: 10px;
 background-color: rgba(217, 219, 191, 0.6);">
     @if($title=="")
-        <x-title-text title="No title Column"/>
+        {{dd($id_tab)}}
+        <x-title-text title="No title Column" id="{{$id}}" id_tab="{{$id_tab}}"/>
     @else
-        <x-title-text title="{{$title}}"/>
+        <x-title-text title="{{$title}}" id="{{$id}}" id_tab="{{$id_tab}}"/>
     @endif
     @foreach($cards as $card)
         <div class="fw-bold fs-6 text-center" style="background-color:rgba(33, 217, 217, 0.7) ;

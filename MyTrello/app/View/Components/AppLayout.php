@@ -6,7 +6,6 @@ use App\Models\MyColumn;
 use App\Models\MyTable;
 use Illuminate\View\Component;
 use Illuminate\Support\Collection;
-use phpDocumentor\Reflection\Types\Integer;
 
 class AppLayout extends Component
 {

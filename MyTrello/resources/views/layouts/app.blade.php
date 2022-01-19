@@ -23,11 +23,11 @@
 @include('layouts.navigation')
 @auth()
         @if(!$table->isEmpty())
-            <x-header-table title="{{$table->first()->title}}"/>
+            <x-header-table title="{{$table->first()->title}}" id="{{$id}}"/>
         @elseif($tables->count()>1)
             <x-tables-list/>
         @else
-            <x-header-table title="{{$tables->first()->title}}"/>
+            <x-header-table title="{{$tables->first()->title}}" id="{{$id}}"/>
         @endif
 
         <hr style="color: crimson; height: 2px; margin-top: 0; opacity: 1;"/>

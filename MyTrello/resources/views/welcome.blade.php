@@ -46,8 +46,8 @@ background-size: cover;'>
     </div>
 </div>
 <div class="container fw-bolder text-center">
-    <div style="margin-top: 200px; color: black; background-color: floralwhite;
-    opacity: 0.6; padding: 20px; border-radius: 20px;  box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+    <div style="margin-top: 200px; color: black; background-color: rgba(250, 249, 222, 0.6);
+    padding: 20px; border-radius: 20px;  box-shadow: 0 0 10px rgba(0,0,0,0.5);">
         <h1>Getting started with MyTrello</h1>
         <h3>Welcome to MyTrello! To get started, you need to register and confirm your email. This application will help
             you correctly distribute work and monitor its implementation. Enjoy your work with MyTrello!</h3>
