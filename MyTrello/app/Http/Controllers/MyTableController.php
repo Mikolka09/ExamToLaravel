@@ -39,7 +39,9 @@ class MyTableController extends Controller
             'title'=>'required'
         ]);
         MyTable::create($request->all());
-        return redirect()->route('dashboard');
+        $title = $request['title'];
+        $table = MyTable::all()->where("title", '==', $title)->first();
+        return redirect()->route('tables.show', compact('table'));
     }
 
     /**

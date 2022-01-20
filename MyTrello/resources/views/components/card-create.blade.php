@@ -4,7 +4,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modalCard{{$id}}" tabindex="-1" aria-labelledby="modalCardLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: papayawhip;">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold" id="modalCardLabel">Create Card</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

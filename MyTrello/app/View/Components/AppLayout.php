@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
 class AppLayout extends Component
 {
     public Collection $tables;
-    public Collection $columns;
     public Collection $table;
     public string $url;
     public string $id;
@@ -23,18 +22,23 @@ class AppLayout extends Component
 
     public function __construct($id = 0, $url = 'http://127.0.0.1:8000/img/wallpapers-nature-029.jpg')
     {
-        $this->id = $id;
         $this->url = $url;
         $this->tables = collect(MyTable::all()->where('user_id', '==', auth()->id()));
-
-        if ($id > 0) {
-            $this->table = collect(MyTable::all()->where('id', '==', $id));
-            $this->columns = collect(MyColumn::all()->where('table_id', '==', $id));
-        } else {
+        if ($id == 0 && $this->tables->count() == 0) {
             $this->table = collect([]);
-            $this->columns = collect([]);
+            $this->tables = collect([]);
         }
-
+        if ($this->tables->count() == 1 && $id > 0) {
+            $this->table = $this->tables;
+        }
+        if ($this->tables->count() == 1 && $id == 0) {
+            $this->table = $this->tables;
+        }
+        if ($this->tables->count() > 1 && $id > 0)
+            $this->table = $this->tables->where('id', '==', $id);
+        if ($this->tables->count() > 1 && $id == 0)
+            $this->table = collect([]);
+        $this->id = $id;
     }
 
     public function render()
@@ -42,7 +46,6 @@ class AppLayout extends Component
         return view('layouts.app', [
             'tables' => $this->tables,
             'table' => $this->table,
-            'url' => $this->url,
-            'columns' => $this->columns]);
+            'url' => $this->url]);
     }
 }

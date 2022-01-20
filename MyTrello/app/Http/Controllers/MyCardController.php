@@ -77,9 +77,16 @@ class MyCardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, MyCard $card)
     {
-        //
+        $request->validate([
+            'task' => 'required',
+            'table_id' => 'required',
+        ]);
+        $card->update($request->all());
+        $id = $request['table_id'];
+        $table = MyTable::all()->where('id','==',$id)->first();
+        return redirect()->route('tables.show', compact('table'));
     }
 
     /**
@@ -88,8 +95,11 @@ class MyCardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, MyCard $card)
     {
-        //
+        $id = $request['table_id'];
+        $card->delete();
+        $table = MyTable::all()->where('id','==',$id)->first();
+        return redirect()->route('tables.show', compact('table'));
     }
 }

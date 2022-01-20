@@ -6,7 +6,7 @@
 <!-- Modal -->
 <div class="modal fade text-start" id="editTable" tabindex="-1" aria-labelledby="editTableLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: powderblue;">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold" id="editTableLabel">Edit Table</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

@@ -6,7 +6,7 @@
 <!-- Modal -->
 <div class="modal fade text-start" id="deleteColumn{{$id}}" tabindex="-1" aria-labelledby="deleteColumnLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: lightsteelblue;">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold" id="deleteColumnLabel">Delete Column</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -19,7 +19,7 @@
                         <input class="form-control" type="text" hidden id="id" name="table_id" value="{{$idtab}}"/>
                         <label for="title" class="form-label fw-bold">
                             Do you really want to delete with Column:
-                            {{collect(App\Models\MyColumn::all()->where('id', '==', $id))->first()->title}}?</label>
+                            <span style="text-decoration: underline; color: red;">{{collect(App\Models\MyColumn::all()->where('id', '==', $id))->first()->title}}</span>?</label>
                     </div>
                     <div class="d-grid gap-2 mt-2">
                         <button type="submit" class="btn btn-danger fw-bold btn-sm">Delete</button>

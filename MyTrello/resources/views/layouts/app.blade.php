@@ -22,10 +22,15 @@
 <div class="min-h-screen">
 @include('layouts.navigation')
 @auth()
-        @if(!$table->isEmpty())
+        {{--{{dd($table->first()->title)}}--}}
+        @if(!$table->isEmpty() && $tables->count()==1)
             <x-header-table title="{{$table->first()->title}}" id="{{$id}}"/>
-        @elseif($tables->count()>1)
+        @elseif(!$table->isEmpty() && $tables->count()>1)
+            <x-header-table title="{{$table->first()->title}}" id="{{$id}}"/>
+        @elseif($tables->count()>1 && $table->isEmpty())
             <x-tables-list/>
+        @elseif($tables->isEmpty())
+            <x-header-table title="Please create a table to get started!" id="{{$id}}"/>
         @else
             <x-header-table title="{{$tables->first()->title}}" id="{{$id}}"/>
         @endif
@@ -36,7 +41,7 @@
         @endif
     @endauth
 </div>
-
+<x-footer/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

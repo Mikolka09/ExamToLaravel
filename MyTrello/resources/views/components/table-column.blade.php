@@ -7,10 +7,7 @@ background-color: rgba(217, 219, 191, 0.6);">
         <x-title-text title="{{$title}}" id="{{$id}}" id_tab="{{$id_tab}}"/>
     @endif
     @foreach($cards as $card)
-        <div class="fw-bold fs-6 text-center" style="background-color:rgba(33, 217, 217, 0.7) ;
-    border: 3px solid #6610f2; border-radius: 10px; margin-top: 5px;">
-            {{$card->task}}
-        </div>
+        <x-card-block task="{{$card->task}}" id_tab="{{$id_tab}}" id="{{$card->id}}"/>
     @endforeach
         <div class="d-grid gap-2 mt-2">
             <x-card-create id="{{$id}}"/>

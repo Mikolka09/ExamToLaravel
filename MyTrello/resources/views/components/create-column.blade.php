@@ -4,7 +4,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modalColumn{{$id}}" tabindex="-1" aria-labelledby="modalColumnLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: papayawhip;">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold" id="modalColumnLabel">Create Column</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
