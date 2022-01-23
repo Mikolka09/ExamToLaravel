@@ -2,13 +2,15 @@
 
 namespace App\View\Components;
 
-use App\Models\MyTable;
+use App\Models\DataUser;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
-class TablesList extends Component
+class UserView extends Component
 {
-    public Collection $tables;
+
+    public Collection $userdata;
 
     /**
      * Create a new component instance.
@@ -17,7 +19,11 @@ class TablesList extends Component
      */
     public function __construct()
     {
-        $this->tables = collect(MyTable::all()->where('user_id', '==', auth()->id()));
+        $base = collect(DataUser::all()->where('id', '==', auth()->id()));
+        if ($base->isEmpty())
+            $this->userdata = collect(new DataUser());
+        else
+            $this->userdata = $base;
     }
 
     /**
@@ -27,6 +33,6 @@ class TablesList extends Component
      */
     public function render()
     {
-        return view('components.table.tables-list', ['tables' => $this->tables]);
+        return view('components.user.user-view', ['userdata' => $this->userdata]);
     }
 }

@@ -32,6 +32,6 @@ class MainTable extends Component
      */
     public function render()
     {
-        return view('components.main-table', ['columns' => $this->columns]);
+        return view('components.table.main-table', ['columns' => $this->columns]);
     }
 }

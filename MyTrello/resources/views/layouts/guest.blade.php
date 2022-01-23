@@ -17,11 +17,15 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <style>
+            body {
+                background: url(img/wallpapers-nature-029.jpg) no-repeat center center fixed;
+                background-size: cover;
+            }
+        </style>
     </head>
-    <body style='background: url(img/wallpapers-nature-029.jpg) no-repeat center center fixed;
-background-size: cover;'>
-        <div class="container-fluid" style="margin-top: 250px;">
-            {{ $slot }}
-        </div>
+    <body>
+        {{ $slot }}
     </body>
 </html>

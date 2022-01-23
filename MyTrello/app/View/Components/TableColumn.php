@@ -37,7 +37,7 @@ class TableColumn extends Component
      */
     public function render()
     {
-        return view('components.table-column', [
+        return view('components.table.table-column', [
             'title' => $this->title,
             'cards' => $this->cards,
             'id' => $this->id,

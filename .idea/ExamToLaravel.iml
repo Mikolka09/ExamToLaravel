@@ -121,6 +121,7 @@
       <excludeFolder url="file://$MODULE_DIR$/MyTrello/vendor/phpunit/php-text-template" />
       <excludeFolder url="file://$MODULE_DIR$/MyTrello/vendor/phpunit/php-code-coverage" />
       <excludeFolder url="file://$MODULE_DIR$/MyTrello/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/MyTrello/vendor/nascent-africa/jetstrap" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

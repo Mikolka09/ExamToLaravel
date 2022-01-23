@@ -6,10 +6,10 @@
         </div>
         <div class="col-1">
             <div>
-                <x-edit-column id="{{$id}}" idtab="{{$idTab}}"/>
+                <x-edit.edit-column id="{{$id}}" idtab="{{$idTab}}"/>
             </div>
             <div>
-                <x-delete-column id="{{$id}}" idtab="{{$idTab}}"/>
+                <x-delete.delete-column id="{{$id}}" idtab="{{$idTab}}"/>
             </div>
         </div>
     </div>

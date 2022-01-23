@@ -115,6 +115,7 @@
       <path value="$PROJECT_DIR$/MyTrello/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/MyTrello/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/MyTrello/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/MyTrello/vendor/nascent-africa/jetstrap" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">

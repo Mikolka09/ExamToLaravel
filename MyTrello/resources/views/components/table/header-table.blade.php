@@ -9,10 +9,10 @@
         <div class="col-1 text-center" style="background-color: rgba(214, 217, 33, 0.6);">
             @if($id != 0)
                 <div>
-                    <x-edit-table id="{{$id}}"/>
+                    <x-edit.edit-table id="{{$id}}"/>
                 </div>
                 <div>
-                    <x-delete-table id="{{$id}}"/>
+                    <x-delete.delete-table id="{{$id}}"/>
                 </div>
             @endif
         </div>

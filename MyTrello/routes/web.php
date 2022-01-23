@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\MyCardController;
 use App\Http\Controllers\MyColumnController;
 use App\Http\Controllers\MyTableController;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('tables', MyTableController:: class);
 Route::resource('columns', MyColumnController:: class);
 Route::resource('cards', MyCardController:: class);
+Route::resource('data-users', DataUserController:: class);
 
 Route::get('/', function () {
     return view('welcome');

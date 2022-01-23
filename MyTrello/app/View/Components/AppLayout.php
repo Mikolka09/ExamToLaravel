@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Models\MyColumn;
 use App\Models\MyTable;
 use Illuminate\View\Component;
 use Illuminate\Support\Collection;
@@ -20,7 +19,7 @@ class AppLayout extends Component
      * @return \Illuminate\View\View
      */
 
-    public function __construct($id = 0, $url = 'http://127.0.0.1:8000/img/wallpapers-nature-029.jpg')
+    public function __construct($id = 0, $url = 'http://127.0.0.1:8000/img/wallpapers-nature-024.jpg')
     {
         $this->url = $url;
         $this->tables = collect(MyTable::all()->where('user_id', '==', auth()->id()));

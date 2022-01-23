@@ -24,6 +24,6 @@ class CardCreate extends Component
      */
     public function render()
     {
-        return view('components.card-create', ['id'=>$this->id_col]);
+        return view('components.table.card-create', ['id'=>$this->id_col]);
     }
 }

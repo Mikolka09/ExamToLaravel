@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>MyTrello</title>
 
@@ -11,9 +12,17 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        body {
+            background: url(img/wallpapers-nature-029.jpg) no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
 </head>
-<body style='background: url(img/wallpapers-nature-029.jpg) no-repeat center center fixed;
-background-size: cover;'>
+<body>
 <div class="container-fluid">
     <div class="row border-bottom border-warning border-4 p-2">
         <div class="col">
@@ -22,7 +31,8 @@ background-size: cover;'>
             </a>
         </div>
         <div class="col-6 d-grid gap-2 d-md-flex m-lg-auto justify-content-md-center">
-            <h2 class="fw-bold fst-italic" style="color: coral; text-shadow: 1px 1px 2px black, 0 0 1em red;">Welcome to MyTrello!</h2>
+            <h2 class="fw-bold fst-italic" style="color: coral; text-shadow: 1px 1px 2px black, 0 0 1em red;">Welcome to
+                MyTrello!</h2>
         </div>
         <div class="col-3 d-grid gap-2 d-md-flex m-lg-auto justify-content-md-end">
             @if (Route::has('login'))
@@ -55,12 +65,9 @@ background-size: cover;'>
 </div>
 <x-footer/>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
-
 </body>
 </html>
