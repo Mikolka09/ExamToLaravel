@@ -32,18 +32,45 @@ class DataUserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+
+        $path = 'storage//folder//';
+        $file = $request->file('avatar');
+        $upload_folder = 'public/folder';
+        $filename = $file->getClientOriginalName();
+        $urlAvatar = $path.$filename;
+        $request['avatar'] = $urlAvatar;
+        Storage::putFileAs($upload_folder, $file, $filename);
+
+        $file = $request->file('imgUrl');
+        $upload_folder = 'public/folder';
+        $filename = $file->getClientOriginalName();
+        $urlImg = $path.$filename;
+        $request['imgUrl'] = $urlImg;
+        Storage::putFileAs($upload_folder, $file, $filename);
+
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'avatar' => 'required',
+            'imgUrl' => 'required'
+        ]);
+
+        DataUser::create($request->all());
+
+        return redirect()->route('dashboard');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +81,7 @@ class DataUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +92,8 @@ class DataUserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
@@ -89,7 +116,7 @@ class DataUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(DataUser $dataUser)

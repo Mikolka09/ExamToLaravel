@@ -22,11 +22,22 @@
                         {{ Auth::user()->name }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="menuLink">
-                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#viewModal">View</a>
-                        </li>
-                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
-                        </li>
-                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                        @if(!collect(App\Models\DataUser::all()->where('id', '==', auth()->id()))->isEmpty())
+                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
+                                   data-bs-target="#viewModal">View User</a>
+                            </li>
+                        @endif
+                        @if(!collect(App\Models\DataUser::all()->where('id', '==', auth()->id()))->isEmpty())
+                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
+                                   data-bs-target="#editModal">Edit Data</a>
+                            </li>
+                        @else
+                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
+                                   data-bs-target="#createModal">Create Data</a>
+                            </li>
+                        @endif
+                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete
+                                User</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -58,7 +69,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <div class="container-fluid">
+                    <div>
+                        <strong>Login: </strong>
+                        <span>{{Auth::user()->name}}</span>
+                    </div>
+                    <div>
+                        <strong>Email: </strong>
+                        <span>{{Auth::user()->email}}</span>
+                        <x-user-data-view/>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
@@ -89,11 +110,32 @@
                         <input class="form-control" readonly type="email" id="email" name="email" placeholder="Email"
                                value="{{Auth::user()->email}}"/>
                         <small type="text" class="form-text text-muted">Email blocked for modification!</small>
-                        <x-user-view/>
                     </div>
+                    <x-user-view/>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary fw-bold">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: powderblue;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Data User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('data-users.store', auth()->id())}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <x-user-view/>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary fw-bold">Create</button>
                     </div>
                 </form>
             </div>

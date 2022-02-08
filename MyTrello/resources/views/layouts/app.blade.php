@@ -25,7 +25,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style='overflow-x:hidden;'>
     <div>
         @include('layouts.navigation')
         @auth()

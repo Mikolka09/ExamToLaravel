@@ -6,7 +6,7 @@ use App\Models\DataUser;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
-class UserView extends Component
+class UserDataView extends Component
 {
 
     public Collection $userdata;
@@ -18,11 +18,7 @@ class UserView extends Component
      */
     public function __construct()
     {
-        $base = collect(DataUser::all()->where('id', '==', auth()->id()));
-        if ($base->isEmpty())
-            $this->userdata = collect(new DataUser());
-        else
-            $this->userdata = $base;
+        $this->userdata = collect(DataUser::all()->where('id', '==', auth()->id()));
     }
 
     /**
@@ -32,6 +28,6 @@ class UserView extends Component
      */
     public function render()
     {
-        return view('components.user.user-view', ['userdata' => $this->userdata]);
+        return view('components.user.user-data-view', ['userdata' => $this->userdata]);
     }
 }
