@@ -22,12 +22,10 @@
                         {{ Auth::user()->name }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="menuLink">
-                        @if(!collect(App\Models\DataUser::all()->where('id', '==', auth()->id()))->isEmpty())
+                        @if(!collect(App\Models\DataUser::all()->where('user_id', '==', auth()->id()))->isEmpty())
                             <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
                                    data-bs-target="#viewModal">View User</a>
                             </li>
-                        @endif
-                        @if(!collect(App\Models\DataUser::all()->where('id', '==', auth()->id()))->isEmpty())
                             <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
                                    data-bs-target="#editModal">Edit Data</a>
                             </li>
@@ -65,21 +63,22 @@
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: papayawhip;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">View User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">View User -
+                    <span style="text-decoration: underline">{{Auth::user()->name}}</span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <div>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-6" >
                         <strong>Login: </strong>
-                        <span>{{Auth::user()->name}}</span>
+                        <span style="font-style: italic">{{Auth::user()->name}}</span>
                     </div>
-                    <div>
+                    <div class="col-6">
                         <strong>Email: </strong>
-                        <span>{{Auth::user()->email}}</span>
-                        <x-user-data-view/>
+                        <span style="font-style: italic">{{Auth::user()->email}}</span>
                     </div>
                 </div>
+                <x-user-data-view/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
@@ -99,18 +98,6 @@
                 <form action="{{route('data-users.update', auth()->id())}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
-                    <div class="form-group">
-                        <label for="login" class="form-label fw-bold">Login</label>
-                        <input class="form-control" type="text" id="login" name="login" placeholder="Login"
-                               value="{{Auth::user()->name}}"/>
-                        <small type="text" class="form-text text-muted">Enter the Login</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label fw-bold">Email</label>
-                        <input class="form-control" readonly type="email" id="email" name="email" placeholder="Email"
-                               value="{{Auth::user()->email}}"/>
-                        <small type="text" class="form-text text-muted">Email blocked for modification!</small>
-                    </div>
                     <x-user-view/>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>

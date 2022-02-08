@@ -18,7 +18,7 @@ class UserDataView extends Component
      */
     public function __construct()
     {
-        $this->userdata = collect(DataUser::all()->where('id', '==', auth()->id()));
+        $this->userdata = collect(DataUser::all()->where('user_id', '==', auth()->id()));
     }
 
     /**

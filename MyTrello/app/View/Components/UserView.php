@@ -18,7 +18,7 @@ class UserView extends Component
      */
     public function __construct()
     {
-        $base = collect(DataUser::all()->where('id', '==', auth()->id()));
+        $base = collect(DataUser::all()->where('user_id', '==', auth()->id()));
         if ($base->isEmpty())
             $this->userdata = collect(new DataUser());
         else
