@@ -9,7 +9,7 @@ class DataUser extends Model
 {
     use HasFactory;
     protected $table = 'data_users';
-    /*protected $fillable=[
+    protected $fillable=[
         'firstname',
         'lastname',
         'country',
@@ -17,5 +17,5 @@ class DataUser extends Model
         'avatar',
         'imgUrl',
         'user_id'
-    ];*/
+    ];
 }

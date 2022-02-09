@@ -63,7 +63,7 @@
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: papayawhip;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">View User -
+                <h5 class="modal-title" id="exampleModalLabel">View Data User -
                     <span style="text-decoration: underline">{{Auth::user()->name}}</span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -91,7 +91,8 @@
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: powderblue;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data User -
+                    <span style="text-decoration: underline">{{Auth::user()->name}}</span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -134,7 +135,8 @@
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: lightsteelblue;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Data User -
+                    <span style="text-decoration: underline">{{Auth::user()->name}}</span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -143,7 +145,7 @@
                     @method("DELETE")
                     <div class="form-group mb-2">
                         <label for="title" class="form-label fw-bold">
-                            Do you really want to delete your account:
+                            Do you really want to delete data your account:
                             <span
                                 style="text-decoration: underline; color: red;">{{Auth::user()->name}}</span>?</label>
                     </div>

@@ -20,16 +20,16 @@
 
         <style>
             body {
+                overflow-x:hidden;
                 background: url({{$url}}) no-repeat center center fixed;
                 background-size: cover;
             }
         </style>
     </head>
-    <body style='overflow-x:hidden;'>
+    <body>
     <div>
         @include('layouts.navigation')
         @auth()
-
             @if(!$table->isEmpty() && $tables->count()==1)
                 <x-table.header-table title="{{$table->first()->title}}" id="{{$id}}"/>
             @elseif(!$table->isEmpty() && $tables->count()>1)

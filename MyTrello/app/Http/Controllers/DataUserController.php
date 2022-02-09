@@ -6,6 +6,7 @@ use App\Models\DataUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use function GuzzleHttp\Promise\all;
 
 class DataUserController extends Controller
 {
@@ -38,19 +39,24 @@ class DataUserController extends Controller
     public function store(Request $request)
     {
         $path = 'storage/folder/';
-        $file = $request->file('avatar');
-        $upload_folder = 'public/folder';
-        $filename = $file->getClientOriginalName();
-        $urlAvatar = $path . $filename;
+        $urlAvatar = "";
+        $urlImg = "";
+        if ($request->file('avatar') != null) {
+            $file = $request->file('avatar');
+            $upload_folder = 'public/folder';
+            $filename = $file->getClientOriginalName();
+            $urlAvatar = $path . $filename;
 
-        Storage::putFileAs($upload_folder, $file, $filename);
+            Storage::putFileAs($upload_folder, $file, $filename);
+        }
+        if ($request->file('imgUrl') != null) {
+            $file = $request->file('imgUrl');
+            $upload_folder = 'public/folder';
+            $filename = $file->getClientOriginalName();
+            $urlImg = $path . $filename;
 
-        $file = $request->file('imgUrl');
-        $upload_folder = 'public/folder';
-        $filename = $file->getClientOriginalName();
-        $urlImg = $path . $filename;
-
-        Storage::putFileAs($upload_folder, $file, $filename);
+            Storage::putFileAs($upload_folder, $file, $filename);
+        }
 
         $request->validate([
             'firstname' => 'required',
@@ -103,12 +109,11 @@ class DataUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->file('imgUrl')!=null);
-        $userdata = DataUser::all()->where('user_id','==',$id);
+        $userdata = DataUser::where("user_id", $id)->first();
         $path = 'storage/folder/';
         $urlAvatar = "";
         $urlImg = "";
-        if ($request->file('avatar')!=null) {
+        if ($request->file('avatar') != null) {
             $file = $request->file('avatar');
             $upload_folder = 'public/folder';
             $filename = $file->getClientOriginalName();
@@ -116,7 +121,7 @@ class DataUserController extends Controller
 
             Storage::putFileAs($upload_folder, $file, $filename);
         }
-        if ($request->file('imgUrl')!=null) {
+        if ($request->file('imgUrl') != null) {
             $file = $request->file('imgUrl');
             $upload_folder = 'public/folder';
             $filename = $file->getClientOriginalName();
@@ -137,16 +142,23 @@ class DataUserController extends Controller
         $userdata->country = $request['country'];
         $userdata->city = $request['city'];
         $userdata->user_id = $request['user_id'];
-        if ($request->file('imgUrl')!=null)
+        if ($request->file('imgUrl') != null)
             $userdata->imgUrl = $urlImg;
         else
-            $userdata->imgUrl = $userdata[0]->imgUrl;
-        if ($request->file('avatar')!=null)
+            $userdata->imgUrl = DataUser::all()->where('user_id','==', $request['user_id'])->first()->imgUrl;
+        if ($request->file('avatar') != null)
             $userdata->avatar = $urlAvatar;
         else
-            $userdata->avatar = $userdata[0]->avatar;
-        //dd($userdata);
-        $userdata->update();
+            $userdata->avatar = DataUser::all()->where('user_id','==', $request['user_id'])->first()->avatar;
+        $userdata->update([
+            'firstname'=>$userdata->firstname,
+            'lastname'=>$userdata->lastname,
+            'country'=>$userdata->country,
+            'city'=>$userdata->city,
+            'user_id'=>$userdata->user_id,
+            'imgUrl'=>$userdata->imgUrl,
+            'avatar'=>$userdata->avatar]);
+
         return redirect()->route('dashboard');
     }
 
