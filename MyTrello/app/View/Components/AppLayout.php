@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\DataUser;
 use App\Models\MyTable;
 use Illuminate\View\Component;
 use Illuminate\Support\Collection;
@@ -19,9 +20,10 @@ class AppLayout extends Component
      * @return \Illuminate\View\View
      */
 
-    public function __construct($id = 0, $url = 'http://127.0.0.1:8000/img/wallpapers-nature-024.jpg')
+    public function __construct($id = 0)
     {
-        $this->url = $url;
+        $urlUser =DataUser::all()->where('user_id', '==', auth()->id())->first()->imgUrl;
+        $this->url = $urlUser;
         $this->tables = collect(MyTable::all()->where('user_id', '==', auth()->id()));
         if ($id == 0 && $this->tables->count() == 0) {
             $this->table = collect([]);

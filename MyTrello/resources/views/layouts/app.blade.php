@@ -21,7 +21,7 @@
         <style>
             body {
                 overflow-x:hidden;
-                background: url({{$url}}) no-repeat center center fixed;
+                background: url({{asset($url)}}) no-repeat center center fixed;
                 background-size: cover;
             }
         </style>

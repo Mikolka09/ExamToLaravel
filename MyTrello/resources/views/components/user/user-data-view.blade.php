@@ -22,11 +22,11 @@
     <div class="row">
         <div class="col-6">
             <strong>Avatar: </strong>
-            <div style="margin-bottom: 10px;"><img src="{{$userdata[0]->avatar}}" width="80px" alt="Avatar"></div>
+            <div style="margin-bottom: 10px;"><img src="{{asset($userdata[0]->avatar)}}" width="80px" alt="Avatar"></div>
         </div>
         <div class="col-6">
             <strong>Background Image: </strong>
-            <div style="margin-bottom: 10px;"><img src="{{$userdata[0]->imgUrl}}" width="120px" alt="imgUrl"></div>
+            <div style="margin-bottom: 10px;"><img src="{{asset($userdata[0]->imgUrl)}}" width="120px" alt="imgUrl"></div>
         </div>
     </div>
 @endif

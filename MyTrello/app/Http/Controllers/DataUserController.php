@@ -168,8 +168,10 @@ class DataUserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DataUser $dataUser)
+    public function destroy($id)
     {
-        $dataUser->delete();
+        $userdata = DataUser::where("user_id", $id)->first();
+        $userdata->delete();
+        return redirect()->route('dashboard');
     }
 }
