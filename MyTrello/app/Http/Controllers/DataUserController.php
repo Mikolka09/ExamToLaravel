@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataUser;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use function GuzzleHttp\Promise\all;
 
 class DataUserController extends Controller
 {
@@ -145,19 +143,21 @@ class DataUserController extends Controller
         if ($request->file('imgUrl') != null)
             $userdata->imgUrl = $urlImg;
         else
-            $userdata->imgUrl = DataUser::all()->where('user_id','==', $request['user_id'])->first()->imgUrl;
+            $userdata->imgUrl = DataUser::all()->where('user_id', '==', $request['user_id'])
+                ->first()->imgUrl;
         if ($request->file('avatar') != null)
             $userdata->avatar = $urlAvatar;
         else
-            $userdata->avatar = DataUser::all()->where('user_id','==', $request['user_id'])->first()->avatar;
+            $userdata->avatar = DataUser::all()->where('user_id', '==', $request['user_id'])
+                ->first()->avatar;
         $userdata->update([
-            'firstname'=>$userdata->firstname,
-            'lastname'=>$userdata->lastname,
-            'country'=>$userdata->country,
-            'city'=>$userdata->city,
-            'user_id'=>$userdata->user_id,
-            'imgUrl'=>$userdata->imgUrl,
-            'avatar'=>$userdata->avatar]);
+            'firstname' => $userdata->firstname,
+            'lastname' => $userdata->lastname,
+            'country' => $userdata->country,
+            'city' => $userdata->city,
+            'user_id' => $userdata->user_id,
+            'imgUrl' => $userdata->imgUrl,
+            'avatar' => $userdata->avatar]);
 
         return redirect()->route('dashboard');
     }

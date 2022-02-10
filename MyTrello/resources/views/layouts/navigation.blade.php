@@ -15,27 +15,45 @@
 
             <!-- Settings Dropdown -->
             <div class="col-3 d-grid gap-2 d-md-flex m-lg-auto justify-content-md-end">
+                @if($avatar !=='No avatar')
+                    <div title="{{ Auth::user()->name }}">
+                        <img src="{{asset($avatar)}}" alt="Avatar" width="40px"
+                             style="border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.5);"/>
+                    </div>
+                @endif
                 <div class="dropdown">
-                    <button class="btn btn-info fw-bold dropdown-toggle" type="button" id="menuLink"
+                    <button class="btn btn-info fw-bold dropdown-toggle" type="button" id="navbarDropdownMenuLink"
                             data-bs-toggle="dropdown" aria-expanded="false"
                             style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">
                         {{ Auth::user()->name }}
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="menuLink">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a type="button" class="dropdown-item" data-bs-toggle="modal"
+                               data-bs-target="#viewModal">View User</a>
+                        </li>
+                        <li>
+                            <a type="button" class="dropdown-item" data-bs-toggle="modal"
+                               data-bs-target="#editUserModal">Edit User</a>
+                        </li>
+                        <li>
+                            <a type="button" class="dropdown-item" data-bs-toggle="modal"
+                               data-bs-target="#deleteUserModal">Delete User</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         @if(!collect(App\Models\DataUser::all()->where('user_id', '==', auth()->id()))->isEmpty())
                             <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
-                                   data-bs-target="#viewModal">View User</a>
-                            </li>
-                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
-                                   data-bs-target="#editModal">Edit Data</a>
+                                   data-bs-target="#editModal">Edit Data User</a>
                             </li>
                         @else
                             <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
-                                   data-bs-target="#createModal">Create Data</a>
+                                   data-bs-target="#createModal">Create Data User</a>
                             </li>
                         @endif
                         <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete
-                                User</a>
+                                Data User</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -69,7 +87,7 @@
             </div>
             <div class="modal-body">
                 <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-6" >
+                    <div class="col-6">
                         <strong>Login: </strong>
                         <span style="font-style: italic">{{Auth::user()->name}}</span>
                     </div>
@@ -82,6 +100,45 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: powderblue;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit User -
+                    <span style="text-decoration: underline">{{Auth::user()->name}}</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('password.update') }}">
+                @csrf
+                    <input type="hidden" name="token" value="{{ Auth::user()->remember_token}}">
+                    <div class="mb-3">
+                        <x-label for="email" :value="__('Email')" />
+                        <x-input id="email" type="email" name="email" :value="old('email', Auth::user()->email)" required autofocus />
+                    </div>
+                    <div class="mb-3">
+                        <x-label for="password" :value="__('Password')" />
+                        <x-input id="password" type="password" name="password" required />
+                    </div>
+                    <div class="mb-3">
+                        <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                        <x-input id="password_confirmation" type="password"
+                                 name="password_confirmation" required />
+                    </div>
+                    <div class="mb-0">
+                        <div class="d-flex justify-content-end">
+                            <x-button>
+                                {{ __('Reset Password') }}
+                            </x-button>
+                        </div>
+                    </div>
+                </form>
+                </form>
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@
     </head>
     <body>
     <div>
-        @include('layouts.navigation')
+        @include('layouts.navigation', ['avatar'=>$avatar])
         @auth()
             @if(!$table->isEmpty() && $tables->count()==1)
                 <x-table.header-table title="{{$table->first()->title}}" id="{{$id}}"/>

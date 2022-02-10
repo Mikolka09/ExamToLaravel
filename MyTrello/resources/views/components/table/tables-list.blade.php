@@ -1,7 +1,7 @@
 <div class="row">
     <div class="dropdown col-1">
-        <button class="btn btn-info dropdown-toggle fw-bold" style="margin: 6px;" type="button"
-                id="dropdownTables"
+        <button class="btn btn-info dropdown-toggle fw-bold"
+                style="margin: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" type="button" id="dropdownTables"
                 data-bs-toggle="dropdown" aria-expanded="false">
             Tables List
         </button>

@@ -13,6 +13,7 @@ class AppLayout extends Component
     public Collection $table;
     public string $url;
     public string $id;
+    public string $avatar;
 
     /**
      * Get the view / contents that represents the component.
@@ -22,8 +23,16 @@ class AppLayout extends Component
 
     public function __construct($id = 0)
     {
-        $urlUser =DataUser::all()->where('user_id', '==', auth()->id())->first()->imgUrl;
+        $urlUser = is_null(DataUser::all()->where('user_id', '==', auth()->id())
+            ->first()) ? 'img/wallpapers-nature-024.jpg' : DataUser::all()
+            ->where('user_id', '==', auth()->id())->first()->imgUrl;
         $this->url = $urlUser;
+
+        $avatar = is_null(DataUser::all()->where('user_id', '==', auth()->id())
+            ->first()) ? 'No avatar' : DataUser::all()
+            ->where('user_id', '==', auth()->id())->first()->avatar;
+        $this->avatar = $avatar;
+
         $this->tables = collect(MyTable::all()->where('user_id', '==', auth()->id()));
         if ($id == 0 && $this->tables->count() == 0) {
             $this->table = collect([]);
@@ -47,6 +56,7 @@ class AppLayout extends Component
         return view('layouts.app', [
             'tables' => $this->tables,
             'table' => $this->table,
-            'url' => $this->url]);
+            'url' => $this->url,
+            'avatar' => $this->avatar]);
     }
 }
