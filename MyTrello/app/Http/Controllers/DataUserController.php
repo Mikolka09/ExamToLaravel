@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -168,10 +169,18 @@ class DataUserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $userdata = DataUser::where("user_id", $id)->first();
-        $userdata->delete();
-        return redirect()->route('dashboard');
+        if($request->met == 'data-user'){
+            $userdata = DataUser::where("user_id", $id)->first();
+            $userdata->delete();
+            return redirect()->route('dashboard');
+        }
+        else{
+            $user = User::where("id", $id)->first();
+            $user->delete();
+            return redirect()->route('welcome');
+        }
     }
+
 }

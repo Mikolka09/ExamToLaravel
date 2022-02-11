@@ -2,21 +2,21 @@
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-6">
             <strong>FirstName: </strong>
-            <span style="font-style: italic">{{$userdata[0]->firstname}}</span>
+            <span style="color: blueviolet; font-weight: bold;">{{$userdata[0]->firstname}}</span>
         </div>
         <div class="col-6">
             <strong>LastName: </strong>
-            <span style="font-style: italic">{{$userdata[0]->lastname}}</span>
+            <span style="color: blueviolet; font-weight: bold;">{{$userdata[0]->lastname}}</span>
         </div>
     </div>
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-6">
             <strong>Country: </strong>
-            <span style="font-style: italic">{{$userdata[0]->country}}</span>
+            <span style="color: blueviolet; font-weight: bold;">{{$userdata[0]->country}}</span>
         </div>
         <div class="col-6">
             <strong>City: </strong>
-            <span style="font-style: italic">{{$userdata[0]->city}}</span>
+            <span style="color: blueviolet; font-weight: bold;">{{$userdata[0]->city}}</span>
         </div>
     </div>
     <div class="row">

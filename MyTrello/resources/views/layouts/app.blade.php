@@ -31,20 +31,20 @@
         @include('layouts.navigation', ['avatar'=>$avatar])
         @auth()
             @if(!$table->isEmpty() && $tables->count()==1)
-                <x-table.header-table title="{{$table->first()->title}}" id="{{$id}}"/>
+                <x-table.header-table title="{{$table->first()->title}}" id="{{$table->first()->id}}"/>
             @elseif(!$table->isEmpty() && $tables->count()>1)
-                <x-table.header-table title="{{$table->first()->title}}" id="{{$id}}"/>
+                <x-table.header-table title="{{$table->first()->title}}" id="{{$table->first()->id}}"/>
             @elseif($tables->count()>1 && $table->isEmpty())
                 <x-tables-list/>
             @elseif($tables->isEmpty())
                 <x-table.header-table title="Please create a table to get started!" id="{{$id}}"/>
             @else
-                <x-table.header-table title="{{$tables->first()->title}}" id="{{$id}}"/>
+                <x-table.header-table title="{{$tables->first()->title}}" id="{{$table->first()->id}}"/>
             @endif
 
             <hr style="color: crimson; height: 2px; margin-top: 0; opacity: 1;"/>
             @if(!$table->isEmpty() || $tables->count()==1)
-                <x-main-table id="{{$id}}"/>
+                <x-main-table id="{{$table->first()->id}}"/>
             @endif
         @endauth
     </div>

@@ -36,7 +36,8 @@ class MyTableController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required'
+            'title'=>'required',
+            'user_id'=>'required'
         ]);
         MyTable::create($request->all());
         $title = $request['title'];

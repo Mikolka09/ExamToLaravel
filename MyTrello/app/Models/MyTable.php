@@ -9,5 +9,5 @@ class MyTable extends Model
 {
     use HasFactory;
 
-    protected $fillable=['title'];
+    protected $fillable=['title', 'user_id'];
 }

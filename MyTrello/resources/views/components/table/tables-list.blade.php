@@ -7,7 +7,8 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownTables">
             @foreach($tables as $table)
-                <li><a class="dropdown-item" href='{{route('tables.show', $table->id)}}'>{{$table->title}}</a></li>
+                <li><a class="dropdown-item" href='{{route('tables.show', $table->id)}}'><span
+                            style="text-transform: uppercase;">{{$table->title}}</span></a></li>
             @endforeach
         </ul>
     </div>

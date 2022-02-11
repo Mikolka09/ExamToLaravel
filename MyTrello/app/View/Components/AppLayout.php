@@ -56,6 +56,7 @@ class AppLayout extends Component
         return view('layouts.app', [
             'tables' => $this->tables,
             'table' => $this->table,
+            'id' => $this->id,
             'url' => $this->url,
             'avatar' => $this->avatar]);
     }

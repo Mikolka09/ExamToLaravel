@@ -12,6 +12,7 @@
             <div class="modal-body">
                 <form action="{{route('tables.store')}}" method="POST">
                     @csrf
+                    <input class="form-control" type="text" hidden id="id" name="user_id" value="{{auth()->id()}}"/>
                     <div class="form-group mb-2">
                         <label for="title" class="form-label fw-bold">Title Table</label>
                         <input class="form-control" type="text" id="title" name="title" placeholder="Title Table"/>
