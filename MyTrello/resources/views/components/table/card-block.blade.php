@@ -1,5 +1,4 @@
-<div class="container" style="background-color:rgba(33, 217, 217, 0.7) ;
-    border: 3px solid #6610f2; border-radius: 10px; margin-top: 5px;">
+<div class="container" id="{{$id}}" style="border: 3px solid #6610f2; border-radius: 10px; margin-top: 5px;">
     <div class="row text-start align-items-center">
         <div class="col-10 fw-bold fs-6">
             {{$task}}
@@ -14,4 +13,6 @@
         </div>
     </div>
 </div>
-
+<script>
+    document.getElementById({{$id}}).style.backgroundColor = '{{$rgba}}';
+</script>

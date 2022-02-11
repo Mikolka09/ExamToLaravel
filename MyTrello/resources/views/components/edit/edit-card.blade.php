@@ -16,6 +16,41 @@
                     @csrf
                     @method("PUT")
                     <div class="form-group mb-2">
+                        <label for="task" class="form-label fw-bold">Importance</label>
+                        <div class="row justify-content-center">
+                            <div class="col-4">
+                                <input class="form-check-input" type="checkbox" name="rgba" id="important"
+                                       value="rgba(196, 51, 51, 0.7)"/>
+                                <label class="form-check-label">
+                                    <div style="background-color:rgba(196, 51, 51, 0.7); width: 90px; height: 30px; text-align: center;
+                                border: 2px solid black; border-radius: 15px; margin-left: 5px; font-weight: bold;">
+                                        Important
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-4">
+                                <input class="form-check-input" type="checkbox" name="rgba" id="medium"
+                                       value="rgba(51, 153, 196, 0.7)"/>
+                                <label class="form-check-label">
+                                    <div style="background-color:rgba(51, 153, 196, 0.7); width: 80px; height: 30px; text-align: center;
+                                border: 2px solid black; border-radius: 15px; margin-left: 5px; font-weight: bold;">
+                                        Medium
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-3">
+                                <input class="form-check-input" type="checkbox" name="rgba" id="low"
+                                       value="rgba(150, 196, 51, 0.7)"/>
+                                <label class="form-check-label">
+                                    <div style="background-color:rgba(150, 196, 51, 0.7); width: 70px; height: 30px; text-align: center;
+                                border: 2px solid black; border-radius: 15px; margin-left: 5px; font-weight: bold;">
+                                        Low
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-2">
                         <input class="form-control" type="text" hidden id="id" name="table_id" value="{{$idTab}}"/>
                         <label for="title" class="form-label fw-bold">Task Card</label>
                         <textarea class="form-control" type="text" id="task" name="task" placeholder="Task Card">{{collect(App\Models\MyCard::all()->where('id', '==', $id))->first()->task}}</textarea>

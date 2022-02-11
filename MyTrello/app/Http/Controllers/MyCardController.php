@@ -40,6 +40,7 @@ class MyCardController extends Controller
         $request->validate([
             'task' => 'required',
             'column_id' => 'required',
+            'rgba' => 'required',
         ]);
         $id = $request['column_id'];
         $table_id = MyColumn::all()->where('id','==', $id)->first()->table_id;
@@ -82,6 +83,7 @@ class MyCardController extends Controller
         $request->validate([
             'task' => 'required',
             'table_id' => 'required',
+            'rgba' => 'required',
         ]);
         $card->update($request->all());
         $id = $request['table_id'];

@@ -9,5 +9,5 @@ class MyCard extends Model
 {
     use HasFactory;
 
-    protected $fillable=['task', 'column_id'];
+    protected $fillable=['task', 'column_id', 'rgba'];
 }

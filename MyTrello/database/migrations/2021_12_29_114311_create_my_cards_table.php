@@ -15,6 +15,7 @@ class CreateMyCardsTable extends Migration
     {
         Schema::create('my_cards', function (Blueprint $table) {
             $table->id();
+            $table->string('rgba')->nullable();
             $table->longText('task')->nullable();
             $table->bigInteger('column_id')->unsigned()->default(1);
             $table->foreign('column_id')->references('id')->on('my_columns')->onDelete('cascade');
